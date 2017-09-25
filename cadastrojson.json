@@ -1,0 +1,11 @@
+{
+    "produtos":
+  [ 	
+	{"codigo": "1", "descricao":"Desktop Hp Pavilion","preco":"150.000,00","sobre":"Processador Intel 1.9Gz, Ram DDR 2GB, LCD 24"},
+	{"codigo":" 2", "descricao":"Impressora HP Officejet 6700p","preco":"40.000,00","sobre":"Funcionalidades: Print, Scan, Copy, Web; Wireless"},
+	{"codigo": "3", "descricao":"Pen-Drive Kingstone 8Gb","preco":"2.500,00","sobre":"usb 2.0; portatil, alta qualidade"},
+	{"codigo": "4", "descricao":"UPS King 8Gb","preco":"12.500,00","sobre":"ups com portas usb 2.0; 3 blugin, 24Watts"},
+	{"codigo":"5", "descricao":"PC Hp completo","preco":"120.500,00","sobre":"pc hp: cpu Intel(R) 3.0 Ghz; Ram 2Gb, CD RW "}
+  ]
+
+}

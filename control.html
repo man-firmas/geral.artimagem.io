@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app="produtosModulo">
+  <head>
+     <script src="js/angular.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="imagens/favicon.png">
+
+    <title>Progecto Arte & Imagem</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="Controller/produtojson.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+  </head>
+
+  <body ng-app ng-controller="produtosController" >
+  
+
+  
+
+   <!-- Menu nav bar -->
+		<div ng-include="'menu.html'"></div>
+  
+    <div class="container">
+      <!-- Example row of columns -->
+      <!-- Nav tabs -->
+	
+	   <br>
+	   <br>
+	   <br>
+	  <div class="container">
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#Produtos" role="tab">Produtos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#Serviços" role="tab">Serviços</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#Cadastro" role="tab">Cadastro</a>
+  </li>
+ 
+</ul>
+
+<!-- Menu 1 - produto -->
+<div class="tab-content">
+  <div class="tab-pane active" id="Produtos" role="tabpanel">
+     <div class="form-group">
+    <label for="for_e-mail">Pesquisa Produto</label>
+    <input type="text" ng-model="pesquisaProduto" class="form-control" placeholder="digite aqui a sua pesquisa" id="id_pesquisa" aria-describedby="emailHelp" >
+   </div>
+
+<table class="table table-striped table-hover">
+ 
+  <thead>
+    <tr>
+    <th>Código</th>
+    <th>Produto / serviços</th>
+    <th>Preço</th>
+	<th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="produtosTabela in produtos | filter: pesquisaProduto" ng-click="selecionaProduto(
+	produtosTabela)">
+	     <td> {{produtosTabela.codigo}} </td>
+		 <td> {{produtosTabela.descricao}} </td>
+		 <td> {{produtosTabela.preco}} </td>
+		 <td> {{produtosTabela.sobre}}</td>	 
+	</tr>	
+	
+  </tbody>
+</table>
+  
+  </div>
+  <!-- Fim Menu 1 - produto -->
+  
+  <!-- Menu 2 - serviço -->
+  <div class="tab-pane" id="Serviços" role="tabpanel">
+     <div class="form-group">
+    <label for="for_e-mail">Pesquisa Serviços</label>
+    <input type="text" ng-model="pesquisaServico" class="form-control" placeholder="digite aqui a sua pesquisa" id="id_pesquisa" aria-describedby="emailHelp" >
+   </div>
+
+<table class="table table-striped table-hover">
+ 
+  <thead>
+    <tr>
+    <th>Código</th>
+    <th>Produto / serviços</th>
+    <th>Preço</th>
+	<th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="servicoTabela in servicos | filter: pesquisaServico" ng-click="selecionaServico(
+	servicoTabela)">
+	     <td> {{servicoTabela.codigo}} </td>
+		 <td> {{servicoTabela.descricao}} </td>
+		 <td> {{servicoTabela.preco}} </td>
+		 <td> {{servicoTabela.sobre}}</td>	 
+	</tr>	
+	
+  </tbody>
+</table> 
+  
+  
+  </div>
+ <!-- Fim Menu 2 - serviço -->
+
+ <!-- Menu 3 - cadastro -->
+ <br>
+  <div class="tab-pane" id="Cadastro" role="tabpanel">
+     <form>
+  <div class="form-group">
+   <div class="form-group row">
+    <label for="for_codigo"  class="col-sm-2 col-form-label" >Cadastro de:</label>
+	 <div class="col-sm-10">
+     <label class="custom-control custom-radio">
+  <input id="radio1" name="radio" ng-model='radioEvent' value='true'type="radio"  class="custom-control-input" >
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description"  > Produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span>
+</label>
+
+<label class="custom-control custom-radio" >
+  <input id="radio2" name="radio" type="radio" ng-model='radioEvent' value='false' class="custom-control-input">
+  <span class="custom-control-indicator"  ></span>
+  <span class="custom-control-description">Serviços </span>
+</label>
+  </div>
+   </div>
+    </div>
+	
+  <div class="form-group">
+     <div class="form-group row">
+     <label for="for_e-mail" class="col-sm-2 col-form-label">Descrição:</label>
+	 <div class="col-sm-10">
+    <input type="text"  ng-model="produto.descricao" class="form-control" id="id_descricao" >
+  </div>
+   </div>
+    </div>
+	
+	 <div class="form-group">
+     <div class="form-group row">
+    <label for="for_telefone"class="col-sm-2 col-form-label">  Preço p/ Unid. (akz):</label>
+	 <div class="col-sm-10">
+    <input type="text"  ng-model="produto.preco" class="form-control" id="id_preco" >
+  </div>
+   </div>
+    </div>
+  <div class="form-group">
+     <div class="form-group row">
+    <label for="for_e-mail" class="col-sm-2 col-form-label">Sobre:</label>
+	 <div class="col-sm-10">
+    <textarea class="form-control" ng-model="produto.sobre" id="exampleTextarea" rows="3"></textarea>
+  </div>
+   </div>
+    </div>
+ <div class="form-group">
+   <div class="form-group row">
+    <label for="for_codigo"  class="col-sm-2 col-form-label" >Codigo:</label>
+	 <div class="col-sm-2">
+    <input type="text" ng-model="produto.codigo" class="form-control"  id="id_telefone" >
+  </div>
+   </div>
+    </div>
+  <div class="form-group">
+      <button type="button" ng-click="limparCampos()" id= "id_novo" class="btn btn-success">Novo</button>
+      <button type="button" ng-disabled="!produto.descricao + !produto.preco" ng-click="salvar()"id= "id_gravar" class="btn btn-primary">Gravar</button>
+	  <button type="button" ng-click="exluir()" id= "id_excluir" class="btn btn-danger">Excluir</button>
+	</div>
+</form>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+    <th>Código</th>
+    <th>Produto / serviços</th>
+    <th>Preço</th>
+	<th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="produtosTabela in produtos | filter: pesquisaProduto" ng-click="selecionaProduto(
+	produtosTabela)">
+	     <td>{{produtosTabela.codigo}}</td>
+		 <td>{{produtosTabela.descricao}}</td>
+		 <td>{{produtosTabela.preco}}</td>
+		 <td>{{produtosTabela.sobre}}</td>	 
+	</tr>
+  </tbody>
+</table>
+  </div>
+ <!-- Fim Menu 3 - cadastro --> 
+
+</div>
+<hr>
+  </div> 
+       <footer>
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; Elaborado por: Firmino Gouveia Loureiro &middot;<a href="#">Contactos:</a> &middot; <a href="#">923 371 316</a>&middot;</p>
+      </footer> 
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
